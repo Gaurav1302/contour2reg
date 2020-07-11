@@ -1,4 +1,4 @@
-Merge "randomMesh.stl";
+Merge "./randomMesh.stl";
 Mesh.Algorithm3D = 1;
 Mesh.Optimize = 1;
 Mesh.OptimizeNetgen = 1;
