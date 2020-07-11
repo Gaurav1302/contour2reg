@@ -8,11 +8,11 @@
 
 ## Generate Random Meshes
 
-To generate random meshes, set up the configurations in `Generate/config.py` file and run the following script.
+To generate random meshes, set up the configurations in `Generate/config.py` file and run the following commands:
 
 ```
 cd Generate/
 python blender_generate.py
 ```
 
-A Random organ-like mesh (`randomMesh.stl`) is created in `config.Data_path/$id$` folder. `$id$` corresponds to the mesh id, where a total of `config.num` meshes are generated.
+A Random organ-like mesh (`randomMesh.stl`) is created in `config.Data_path/$id$/` folder, where `$id$` corresponds to the mesh number.  Total of `config.num` meshes are generated.
