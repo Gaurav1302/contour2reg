@@ -1,6 +1,6 @@
-# Contour to Registartion (2D-3D Registration)
+# Contour to Registration (2D-3D Registration)
 
-## Prerequisites
+## Pre-requisites
 
 1. Setup your Python environment using the `requirement.txt` file. The code was tested on Python `3.7.5`.
 2. Install the following softwares:
