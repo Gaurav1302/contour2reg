@@ -36,12 +36,11 @@ export PATH=$PATH:$(pwd)/voxelize
 Alternatively, add path to your `~/,bashrc`.
 
 
-## Generate Random Meshes
-To generate random meshes, set up the configurations in `Generate/config.py` file and run the following commands:
+## Synthetic Data Generation
+To generate synthetic data, set up the hyperparamaters in `Generate/config.py` file, and run the following commands:
 
 ```
+mkdir Data/ _# this folder is defined as config.Data_path_
 cd Generate/
-python blender_generate.py
+python data_generate.py
 ```
-
-A Random organ-like mesh (`randomMesh.stl`) is created in `config.Data_path/$id$/` folder, where `$id$` corresponds to the mesh number.  Total of `config.num` meshes are generated.
