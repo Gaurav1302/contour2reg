@@ -33,7 +33,7 @@ export PATH=$PATH:$(pwd)/vtk2elmer
 export PATH=$PATH:$(pwd)/voxelize
 ```
 
-Alternatively, add path to your `~/,bashrc`.
+Alternatively, add path to your `~/.bashrc`.
 
 
 ## Synthetic Data Generation
@@ -44,3 +44,7 @@ mkdir Data/ # this folder is defined in config.Data_path
 cd Generate/
 python data_generate.py
 ```
+
+
+#### References:
+This repo is built upon the code by Micha Pfeiffer, which is available [here](https://gitlab.com/nct_tso_public/cnn-deformation-estimation/-/tree/master/).
