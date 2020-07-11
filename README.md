@@ -40,7 +40,7 @@ Alternatively, add path to your `~/,bashrc`.
 To generate synthetic data, set up the hyperparamaters in `Generate/config.py` file, and run the following commands:
 
 ```
-mkdir Data/ _# this folder is defined as config.Data_path_
+mkdir Data/ # this folder is defined in config.Data_path
 cd Generate/
 python data_generate.py
 ```
