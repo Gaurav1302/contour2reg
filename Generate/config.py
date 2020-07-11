@@ -4,3 +4,4 @@ num = 2
 seed = 20
 MeshExists = False
 MeshPath = "../Data/1/randomMesh.stl"
+randomMesh_geo_path = "../Data/randomMesh.geo"
