@@ -3,8 +3,6 @@ import os
 import subprocess
 import random
 
-# random.seed(cfg.seed)
-
 print("==========================================")
 print("Generating ", cfg.num, " Random Meshes")
 print("==========================================")
@@ -17,7 +15,6 @@ for i in range(cfg.num):
     else:
         print("Directory already exists..")
 
-
     # Call blender script (generateRandomMesh.py) to generate random meshes
     a = ["blender"]
     a += ["--background"]
@@ -25,11 +22,9 @@ for i in range(cfg.num):
     a += ["--python"]
     a += ["generateRandomMesh.py"]
     a += ["--"]
-    # a += ["--num"]
-    # a += [str(cfg.seed)]
     a += ["--outdir"]
     a += [outputDir]
-    # blender --background -noaudio --python generateRandomMesh.py -- [--num <seed_number>] --outdir "../Data/1/"
+    # blender --background -noaudio --python generateRandomMesh.py -- --outdir "../Data/1/"
     p = subprocess.call( a, shell=False, timeout=None )
 
     print("=================")
