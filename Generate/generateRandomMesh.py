@@ -193,7 +193,5 @@ curveObject.location += randOffset
 
 
 filepath=outputFolder+str('randomMesh.stl')
-# print("Exporting .stl to " + filepath);
 bpy.ops.export_mesh.stl(filepath=filepath, check_existing=False, filter_glob="*.stl", ascii=True, use_mesh_modifiers=True, axis_forward='Y', axis_up='Z', global_scale=1.0)
-
-# bpy.ops.wm.quit_blender()
+bpy.ops.wm.quit_blender()
