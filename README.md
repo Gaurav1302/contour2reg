@@ -1,10 +1,39 @@
 # Contour to Registration (2D-3D Registration)
 
-## Pre-requisites
+## Requirements
+#### Install the following softwares:
+* [Python](https://www.python.org/downloads/) (Tested with version `3.7.5`)
+* [Blender](https://www.blender.org/download/) (Tested with version `2.83`)
+* [PyTorch](https://pytorch.org/) (Tested with version `1.4.0`)
+* [Gmsh](https://gmsh.info/) (Tested with version `4.5.6`)
+* [Elmer](https://github.com/elmercsc/elmerfem) (Tested with version `8.4`)
 
-1. Setup your Python environment using the `requirement.txt` file. The code was tested on Python `3.7.5`.
-2. Install the following softwares:
-    - [Blender](https://www.blender.org/download/) (`v2.83`)
+#### Python modules:
+Setup your Python environment using the `requirement.txt` file, using the following command in your shell.
+```
+pip install -r requirements.txt
+```
+
+## Build Tools
+The Tools folder requires building. Run the following commands in your shell:
+```
+mkdir Tools/Build
+cd Tools/Build
+cmake ../Source/
+make
+```
+
+If VTK 8.1 is not found, you can pass the directory where you built it by adding -DVTK_DIR=/path/to/VTK8.1/ to the cmake call.
+Add the resulting build folders to your path (make sure your current directory is the build folder when you run these commands):
+```
+export PATH=$PATH:$(pwd)/simulationGen
+export PATH=$PATH:$(pwd)/vtk2elmer
+export PATH=$PATH:$(pwd)/voxelize
+```
+
+Alternatively, add path to your `~/,bashrc`.
+
+
 
 ## Generate Random Meshes
 
