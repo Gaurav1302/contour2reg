@@ -9,7 +9,7 @@
 * [Elmer](https://github.com/elmercsc/elmerfem) (Tested with version `8.4`)
 
 #### Python modules:
-Setup your Python environment using the `requirement.txt` file, using the following command in your shell.
+Setup your Python environment using the `requirement.txt` file. Run the following command in your shell to install the required packages.
 ```
 pip install -r requirements.txt
 ```
