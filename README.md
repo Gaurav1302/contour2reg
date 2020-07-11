@@ -4,7 +4,7 @@
 
 1. Setup your Python environment using the `requirement.txt` file. The code was tested on Python `3.7.5`.
 2. Install the following softwares:
-  Blender (`v2.83`)
+    - Blender (`v2.83`)
 
 ## Generate Random Meshes
 
