@@ -4,6 +4,8 @@ import subprocess
 import random
 import shutil
 
+# random.seed(30)
+
 pwd = os.getcwd()
 
 if cfg.MeshExists:
@@ -62,7 +64,7 @@ else:
 
         # Voxelize the input
         print("==========================================")
-        print("Running Voxels on output (voxelize)")
+        print("Running Voxelize on output (voxelize)")
         print("==========================================")
         os.chdir(pwd) # Go back to "Generate/" folder
         b = "voxelize " + os.path.join(outputDir, "simulation/result/case_t0001.vtu") + " " + str(cfg.cubeSideLength) + " 0.025 " + outputDir + " -s 0.3 -b " + os.path.join(outputDir, "simulation.vtu") + " -m 0.1"
