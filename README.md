@@ -4,7 +4,7 @@
 #### Install the following softwares:
 * [Python](https://www.python.org/downloads/) (Tested with version `3.7.5`)
 * [Blender](https://www.blender.org/download/) (Tested with version `2.83`)
-* [PyTorch](https://pytorch.org/) (Tested with version `1.4.0`)
+* [PyTorch](https://pytorch.org/) (Tested with version `1.5.1`)
 * [Gmsh](https://gmsh.info/) (Tested with version `4.5.6`)
 * [Elmer](https://github.com/elmercsc/elmerfem) (Tested with version `8.4`)
 

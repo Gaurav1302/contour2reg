@@ -151,3 +151,4 @@ Tools/Build*
 *.DS_Store
 ._*
 commit.sh
+PsData/*

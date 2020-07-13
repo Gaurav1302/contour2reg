@@ -9,9 +9,9 @@ import data
 ## Outputs:
 # voxels_preprocessed.vtu
 
-dataPath = cfg.Data_path
-num = cfg.num
-startNum = cfg.startNum
+dataPath = cfg.Data_path_ps
+num = cfg.num_simulations_ps
+startNum = cfg.startNum_simulations_ps + 1
 
 valid = 0
 for i in range( startNum, num+startNum ):

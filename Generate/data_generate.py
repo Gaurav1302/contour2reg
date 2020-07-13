@@ -18,6 +18,7 @@ if cfg.MeshExists:
         print("==========================================")
 else:
     for i in range(cfg.num):
+        # i=-1
         # Create folder for this sample
         outputDir = os.path.join(cfg.Data_path,str(i+1))
         if (not os.path.isdir(outputDir)):
