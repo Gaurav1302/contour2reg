@@ -37,12 +37,13 @@ Alternatively, add path to your `~/.bashrc`.
 
 
 ## Synthetic Data Generation
-To generate synthetic data, set up the hyperparamaters in `Generate/config.py` file, and run the following commands:
+To generate synthetic pateint specific (Ps) data, set up the hyperparamaters in `Generate/config.py` file, and run the following commands:
 
 ```
-mkdir Data/ # this folder is defined in config.Data_path
+mkdir PsData/    # this folder is defined in config.Data_path_ps
 cd Generate/
-python data_generate.py
+python patient_specific_data_generate.py
+python preprocessData.py
 ```
 
 
