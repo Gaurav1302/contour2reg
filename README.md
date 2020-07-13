@@ -23,7 +23,7 @@ cmake ../Source/
 make
 ```
 
-If VTK 8.1 is not found, you can pass the directory where you built it by adding -DVTK_DIR=/path/to/VTK8.1/ to the cmake call.
+If `VTK 8.1` is not found, you can pass the directory where you built it by adding `-DVTK_DIR=/path/to/VTK8.1/` to the `cmake` call.
 
 
 Add the resulting build folders to your path (make sure your current directory is the build folder when you run these commands):
