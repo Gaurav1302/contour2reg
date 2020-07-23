@@ -7,7 +7,7 @@ import math
 import time
 from torch.autograd import Variable
 from torch.utils.data import Dataset
-from const import *
+from config import *
 from util import *
 from shutil import copyfile
 import traceback

@@ -1,13 +1,22 @@
-from const import *
+# from const import *
 import config as cfg
 import sys
 import torch
 import gc
+from vtk import *
 
 gridSize = cfg.gridSize
 gridSizeInMeters = cfg.gridSizeInMeters
 meters2Voxels = gridSize/gridSizeInMeters
 voxel2Meters = gridSizeInMeters/gridSize
+
+
+def unstructuredGridToPolyData( ug ):
+    geometryFilter = vtkGeometryFilter()
+    geometryFilter.SetInputData( ug )
+    geometryFilter.Update()
+    return geometryFilter.GetOutput()
+
 
 # Print iterations progress
 def printProgressBar(iteration, total, prefix='', suffix='', decimals=1, bar_length=100):
