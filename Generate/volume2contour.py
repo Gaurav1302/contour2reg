@@ -5,12 +5,13 @@ from vtk.util.numpy_support import vtk_to_numpy
 from vtk import vtkStructuredPointsReader
 import matplotlib
 from util import unstructuredGridToPolyData
-# matplotlib.use('TkAgg')
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
+import cv2
+import os
+import config as cfg
 
-
-def main():
+def generate_contour(data_path, id):
 
     colors = vtk.vtkNamedColors()
 
@@ -22,11 +23,10 @@ def main():
     # iren = vtk.vtkRenderWindowInteractor()
     # iren.SetRenderWindow(renWin)
 
-
-
-
-    # create source/read.vtu file
-    simulationResultFile = "../Data/1/simulation/result/case_t0001.vtu"
+    # read .vtu file
+    simulationResultFile = data_path + "/" + str(id) + "/simulation/result/case_t0001.vtu"
+    mesh_2d_path = data_path + "/" + str(id) + "/mesh_2d.png"
+    contour_path = data_path + "/" + str(id) + "/contour_input.png"
 
     reader = vtk.vtkXMLUnstructuredGridReader()
     reader.SetFileName(simulationResultFile)
@@ -117,43 +117,29 @@ def main():
     w2if.ReadFrontBufferOff()
     w2if.Update()
 
-    save_filename = "../../TestScreenshot.png"
     writer = vtk.vtkPNGWriter()
-    writer.SetFileName(save_filename)
+    writer.SetFileName(mesh_2d_path)
     writer.SetInputConnection(w2if.GetOutputPort())
     writer.Write()
 
-
-    # enable user interface interactor
+    ## enable user interface interactor
     # interactor.Initialize()
     # interactor.Start()
 
-    import cv2
-    import numpy as np
-
-    image = cv2.imread(save_filename)
-
+    image = cv2.imread(mesh_2d_path)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     edged = cv2.Canny(gray, 150, 200)
-    # cv2.waitKey(0)
-
-    contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-
-
-    # plt.imshow(edged)
-    # plt.show()
-    # cv2.imshow('Canny Edges After Contouring', edged)
-    # cv2.waitKey(0)
-
-    cv2.imwrite('../../edge.png', edged)
-
-    cv2.drawContours(image, contours, -1, (0, 255, 0), 3)
-
-    # cv2.imshow('Contours', image)
-    cv2.imwrite('../../cont.png', edged)
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
+    edged = 255-edged
+    # contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    # cv2.drawContours(image, contours, -1, (0, 255, 0), 3)
+    cv2.imwrite(contour_path, edged)
 
 
 if __name__ == '__main__':
-    main()
+
+    data_path = cfg.Data_path_ps
+    num_samples = cfg.num_simulations_ps
+    start_num = cfg.startNum_simulations_ps
+    for i in range(start_num+1, num_samples+1):
+        generate_contour(data_path, i)
+        print(i, "/", num_samples, " done.")

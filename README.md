@@ -43,6 +43,7 @@ To generate synthetic patient specific (Ps) data, set up the hyperparamaters in 
 mkdir PsData/       # This folder must also be defined in config.py as Data_path_ps
 cd Generate/
 python patient_specific_data_generate.py
+python volume2contour.py
 python preprocessData.py
 ```
 
