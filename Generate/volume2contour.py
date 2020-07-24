@@ -6,8 +6,8 @@ from vtk import vtkStructuredPointsReader
 import matplotlib
 from util import unstructuredGridToPolyData
 # matplotlib.use('TkAgg')
-# matplotlib.use('agg')
-
+matplotlib.use('agg')
+import matplotlib.pyplot as plt
 
 
 def main():
@@ -22,6 +22,9 @@ def main():
     # iren = vtk.vtkRenderWindowInteractor()
     # iren.SetRenderWindow(renWin)
 
+
+
+
     # create source/read.vtu file
     simulationResultFile = "../Data/1/simulation/result/case_t0001.vtu"
 
@@ -30,24 +33,42 @@ def main():
     reader.Update()
     output = reader.GetOutput()
 
+    mesh = unstructuredGridToPolyData(output)
+    output = mesh
+
+    # show edges
+    featureEdges = vtk.vtkFeatureEdges()
+    featureEdges.SetInputData(output)
+    featureEdges.BoundaryEdgesOn()
+    # featureEdges.FeatureEdgesOff()
+    # featureEdges.ManifoldEdgesOff()
+    # featureEdges.NonManifoldEdgesOff()
+    featureEdges.Update()
+
     # mapper
     mapper = vtk.vtkDataSetMapper()
     mapper.SetInputData(output)
     mapper.ScalarVisibilityOff()
 
+    # Visualise edges
+    edgeMapper = vtk.vtkPolyDataMapper()
+    edgeMapper.SetInputConnection(featureEdges.GetOutputPort())
+    edgeActor = vtk.vtkActor()
+    edgeActor.SetMapper(edgeMapper)
+
     # Create the Actor
     actor = vtk.vtkActor()
-    actor.GetProperty().EdgeVisibilityOn()
-    actor.GetProperty().SetSpecular(0.6)
-    actor.GetProperty().SetSpecularPower(30)
-    actor.GetProperty().SetLineWidth(2.0)
+    # actor.GetProperty().EdgeVisibilityOn()
+    # actor.GetProperty().SetSpecular(0.6)
+    # actor.GetProperty().SetSpecularPower(30)
+    # actor.GetProperty().SetLineWidth(2.0)
     actor.SetMapper(mapper)
     # backface = vtk.vtkProperty()
     # backface.SetColor(colors.GetColor3d("green"))
     # actor.SetBackfaceProperty(backface)
 
     # Camera setting
-    camera = vtk.vtkCamera()
+    # camera = vtk.vtkCamera()
     # camera.SetViewUp(-0.00168938124049409, 0.995662775211076, -0.0930203421301063)
     # camera.SetViewAngle(30)
     # camera.SetClippingRange(1.12612880757745, 1.4342182273413)
@@ -67,8 +88,10 @@ def main():
 
     # Create the Renderer
     renderer = vtk.vtkRenderer()
+    # renderer.AddActor(actor)
+    # renderer.AddActor(edgeActor)
     renderer.AddActor(actor)
-    renderer.SetBackground(1, 1, 1)  # Set background to white
+    # renderer.SetBackground(1, 1, 1)  # Set background to white
     renderer.SetBackground(colors.GetColor3d("White"))
     # renderer.SetActiveCamera(camera)
 
@@ -87,10 +110,6 @@ def main():
     interactor = vtk.vtkRenderWindowInteractor()
     interactor.SetRenderWindow(renderer_window)
 
-
-
-
-
     # screenshot code:
     w2if = vtk.vtkWindowToImageFilter()
     w2if.SetInput(renderer_window)
@@ -98,15 +117,42 @@ def main():
     w2if.ReadFrontBufferOff()
     w2if.Update()
 
+    save_filename = "../../TestScreenshot.png"
     writer = vtk.vtkPNGWriter()
-    writer.SetFileName("../../TestScreenshot.png")
+    writer.SetFileName(save_filename)
     writer.SetInputConnection(w2if.GetOutputPort())
     writer.Write()
 
 
     # enable user interface interactor
-    interactor.Initialize()
-    interactor.Start()
+    # interactor.Initialize()
+    # interactor.Start()
+
+    import cv2
+    import numpy as np
+
+    image = cv2.imread(save_filename)
+
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    edged = cv2.Canny(gray, 150, 200)
+    # cv2.waitKey(0)
+
+    contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+
+
+    # plt.imshow(edged)
+    # plt.show()
+    # cv2.imshow('Canny Edges After Contouring', edged)
+    # cv2.waitKey(0)
+
+    cv2.imwrite('../../edge.png', edged)
+
+    cv2.drawContours(image, contours, -1, (0, 255, 0), 3)
+
+    # cv2.imshow('Contours', image)
+    cv2.imwrite('../../cont.png', edged)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
 
 if __name__ == '__main__':
