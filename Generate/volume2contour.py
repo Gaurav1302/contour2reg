@@ -129,10 +129,13 @@ def generate_contour(data_path, id):
     image = cv2.imread(mesh_2d_path)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     edged = cv2.Canny(gray, 150, 200)
-    edged = 255-edged
-    # contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-    # cv2.drawContours(image, contours, -1, (0, 255, 0), 3)
-    cv2.imwrite(contour_path, edged)
+    # edged = 255-edged
+    contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    contour_mask = np.zeros(image.shape) + 255
+    cv2.drawContours(contour_mask, contours, -1, (0, 0, 0), 3)
+    # cv2.imwrite(contour_path, edged)
+    cv2.imwrite(contour_path, contour_mask)
+
 
 
 if __name__ == '__main__':

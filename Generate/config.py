@@ -11,7 +11,7 @@ cubeSideLength = 64
 
 # Patient Specific Parameters
 Data_path_ps = "../PsData"
-num_simulations_ps = 100
+num_simulations_ps = 1
 startNum_simulations_ps = 0
 MeshExists_ps = True
 MeshPath_ps = "../PsData/randomMesh.stl"
