@@ -49,29 +49,33 @@ python preprocessData.py
 
 ## Data Visualization
 
-3D Mesh:
+#### 3D Mesh:
+
 
 <img src="./samples/mesh_sample.jpeg" alt="Mesh" width="200"/>
 
+----------------
 
+#### Simulation:
 
-Simulation:
 
 <img src="./samples/simulation.png" alt="Simulation" width="200"/>
 
+----------------
 
+#### Voxelization & Displacement Field (Output):
 
-Voxelization & Displacement Field (Output):
 
 <img src="./samples/voxelization.png" alt="Voxelization" width="200"/>
 
+----------------
 
+#### Contour (Input):
 
-Contour (Input):
 
 <img src="./samples/contour.jpeg" alt="Contour" width="200"/>
 
-
+----------------
 
 
 For visualizations use [Paraview](https://www.paraview.org/).
