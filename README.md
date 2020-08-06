@@ -51,21 +51,27 @@ python preprocessData.py
 
 3D Mesh:
 
-![Mesh](./samples/mesh_samlpe.jpeg)
+<img src="./samples/mesh_sample.jpeg" alt="Mesh" width="200"/>
 
 
 
 Simulation:
 
-![Simulation](./samples/simulation.png = 20x20)
+<img src="./samples/simulation.png" alt="Simulation" width="200"/>
+
+
 
 Voxelization & Displacement Field (Output):
 
-![Voxelize](./samples/voxelization.png = 20x20)
+<img src="./samples/voxelization.png" alt="Voxelization" width="200"/>
+
+
 
 Contour (Input):
 
-![Contour](./samples/contour.jpeg)
+<img src="./samples/contour.jpeg" alt="Contour" width="200"/>
+
+
 
 
 For visualizations use [Paraview](https://www.paraview.org/).
