@@ -50,16 +50,23 @@ python preprocessData.py
 ## Data Visualization
 
 3D Mesh:
+
 ![Mesh](./samples/mesh_samlpe.jpeg)
 
+
+
 Simulation:
-![Simulation](./samples/simulation.png)
+
+![Simulation](./samples/simulation.png = 20x20)
 
 Voxelization & Displacement Field (Output):
-![Voxelize](./samples/voxelization.png)
+
+![Voxelize](./samples/voxelization.png = 20x20)
 
 Contour (Input):
+
 ![Contour](./samples/contour.jpeg)
+
 
 For visualizations use [Paraview](https://www.paraview.org/).
 
