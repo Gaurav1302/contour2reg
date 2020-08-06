@@ -47,6 +47,21 @@ python volume2contour.py
 python preprocessData.py
 ```
 
+## Data Visualization
+
+3D Mesh:
+![Mesh](./samples/mesh_samlpe.jpeg)
+
+Simulation:
+![Simulation](./samples/simulation.png)
+
+Voxelization & Displacement Field (Output):
+![Voxelize](./samples/voxelization.png)
+
+Contour (Input):
+![Contour](./samples/contour.jpeg)
+
+For visualizations use [Paraview](https://www.paraview.org/).
 
 #### References:
 This repo is built upon the code by Micha Pfeiffer, which is available [here](https://gitlab.com/nct_tso_public/cnn-deformation-estimation/-/tree/master/).
